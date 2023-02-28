@@ -35,7 +35,7 @@ def search_index(request):
             search_type = form.cleaned_data['search_type']
             search_string = form.cleaned_data['search_string']
         token = get_spotify_token()
-        results = get_prediction(token)
+        results = get_prediction(search_string,token)
             
     else:
         form = SearchForm()

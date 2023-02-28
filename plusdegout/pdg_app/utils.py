@@ -29,9 +29,9 @@ def get_spotify_token():
 
     return token
 
-def get_prediction(token):
+def get_prediction(search_string,token):
 
-    track_id = get_track_id("Le sud",token)
+    track_id = get_track_id(search_string,token)
     track_features = get_track_features(track_id,token)
     popularity = call_api(track_features)
 
@@ -79,7 +79,16 @@ def get_track_features(track_id,token):
 
 def call_api(track_features):
     import requests
-    url = "http://0.0.0.0:6000/predict"
+    
+    import base64
+    from dotenv import load_dotenv
+    import os
+
+    load_dotenv()
+    ID = os.getenv('ID')
+    PSW = os.getenv('PSW')
+    HOST_NAME = os.getenv('HOST_NAME')
+    url = f"http://{HOST_NAME}/predict"
     data = dict()
     col = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',
        'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo',
