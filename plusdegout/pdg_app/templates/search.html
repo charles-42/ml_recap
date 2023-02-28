@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+
+{% if results %}
+    <h3>Polularity is {{ results }} </h3>
+{% endif %}
+
+{% endblock %}

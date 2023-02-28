@@ -28,3 +28,6 @@ def get_spotify_token():
     token = r.json()['access_token']
 
     return token
+
+if __name__ == "__main__":
+    print(get_spotify_token())
