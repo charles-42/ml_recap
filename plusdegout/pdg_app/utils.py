@@ -77,5 +77,7 @@ def get_track_features(track_id,token):
     res = requests.get(url=featurers_url, headers=headers)
     return res.json()
 
-def prediction(feature_json):
-    
+# def prediction(feature_json):
+
+if __name__ == "__main__":
+    print(get_spotify_token())
