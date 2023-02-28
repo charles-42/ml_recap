@@ -33,9 +33,9 @@ def get_prediction(token):
 
     track_id = get_track_id("Le sud",token)
     track_features = get_track_features(track_id,token)
-  
+    popularity = call_api(track_features)
 
-    return 100, track_id,track_features
+    return popularity
 
 def get_track_id(track_name,token): 
     import requests
@@ -77,7 +77,20 @@ def get_track_features(track_id,token):
     res = requests.get(url=featurers_url, headers=headers)
     return res.json()
 
-# def prediction(feature_json):
+def call_api(track_features):
+    import requests
+    url = "http://0.0.0.0:6000/predict"
+    data = dict()
+    col = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',
+       'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo',
+       'type', 'duration_ms','time_signature'
+       ]
+
+    for feature in col:
+        data[feature]= track_features[feature]  
+
+    res = requests.post(url=url, json=data)
+    return res.json()
 
 if __name__ == "__main__":
     print(get_spotify_token())
