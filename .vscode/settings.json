@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "POC",
         "django_app",
-        "model"
+        "model",
+        "API"
     ]
 }
