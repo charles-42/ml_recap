@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/charles/ml_recap/mlruns/631184713245926904/6f5bb5637a9c42abbe9ec74dfb8db2f5/artifacts
+end_time: 1677573971073
+entry_point_name: ''
+experiment_id: '631184713245926904'
+lifecycle_stage: active
+run_id: 6f5bb5637a9c42abbe9ec74dfb8db2f5
+run_name: linear_model
+run_uuid: 6f5bb5637a9c42abbe9ec74dfb8db2f5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1677573953488
+status: 3
+tags: []
+user_id: charles
