@@ -1,0 +1,52 @@
+apiVersion: '2021-07-01'
+location: francecentral
+name: pdg_multi_app
+properties:
+  containers:
+  - name: djangocontainer
+    properties:
+      command:
+      - python
+      - manage.py
+      - runserver
+      - 0.0.0.0:8000
+      environmentVariables: []
+      image: spotifyregistrycontainer.azurecr.io/spotify_django_app
+      ports:
+      - port: 8000
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 2.0
+                       
+  - name: modelapi
+    properties:
+      command:
+      - uvicorn
+      - main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - 80
+      environmentVariables: []
+      image: spotifyregistrycontainer.azurecr.io/spotify_linear_model_api
+      ports:
+      - port: 80
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 2.0
+
+  dnsConfig:
+    nameServers:
+    - 10.0.0.0 # DNS Server 1
+    searchDomains: plusdegout.com # DNS search suffix
+  ipAddress:
+    type: Private
+    ports:
+    - port: 8000
+  subnetIds:
+    - id: /subscriptions/ca3d0154-92e2-4ddc-8b54-a2e1b8f5281b/resourceGroups/RG-charles-beniac/providers/Microsoft.Network/virtualNetworks/charles-vnet/subnets/aci-subnet
+  osType: Linux
+tags: null
+type: Microsoft.ContainerInstance/containerGroups

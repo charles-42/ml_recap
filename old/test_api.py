@@ -2,7 +2,7 @@ import requests
 
 
 
-url = "http://0.0.0.0:6000/predict"
+url = "http://0.0.0.0/predict"
 
 
 

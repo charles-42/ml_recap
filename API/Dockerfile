@@ -23,3 +23,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 # az acr login --name spotifyregistrycontainer
 # docker tag spotify_linear_model_api spotifyregistrycontainer.azurecr.io/spotify_linear_model_api:latest
 # docker push  spotifyregistrycontainer.azurecr.io/spotify_linear_model_api:latest
+
+
+# docker tag spotify_django_app spotifyregistrycontainer.azurecr.io/spotify_django_app:latest
+# docker push  spotifyregistrycontainer.azurecr.io/spotify_django_app:latest

@@ -1,3 +1,6 @@
+ID = "b9a4881f9aaa42b4a307e7b70bafc5e8"
+PSW = "53165a66a2d74f04873f52c424de3a35"
+
 def get_spotify_token():
     import requests
     import base64
@@ -29,8 +32,8 @@ def get_spotify_token():
 
     return token
 
-def get_prediction(search_string,token):
 
+def get_prediction(search_string,token):
     track_id = get_track_id(search_string,token)
     track_features = get_track_features(track_id,token)
     popularity = call_api(track_features)
@@ -88,7 +91,7 @@ def call_api(track_features):
     ID = os.getenv('ID')
     PSW = os.getenv('PSW')
     HOST_NAME = os.getenv('HOST_NAME')
-    url = f"http://{HOST_NAME}/predict"
+    url = f"http://0.0.0.0/predict"
     data = dict()
     col = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',
        'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo',
@@ -102,4 +105,6 @@ def call_api(track_features):
     return res.json()
 
 if __name__ == "__main__":
-    print(get_spotify_token())
+    token = get_spotify_token()
+    track_id = get_track_id("le sud",token)
+    print(track_id)

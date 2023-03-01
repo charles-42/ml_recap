@@ -6,6 +6,12 @@ import sklearn
 
 
 def predict_pipeline(form_info):
+       import os
+       import sys
+       import inspect
+
+       currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+       sys.path.insert(0, currentdir) 
        model = pickle.load(open("app/model.pkl", 'rb'))
 
        col = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',

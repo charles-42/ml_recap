@@ -1,0 +1,30 @@
+version: '3.9'
+
+
+services:
+  django:
+    image: spotifyregistrycontainer.azurecr.io/spotify_django_app:latest
+    container_name: djangocontainer
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+
+  modelapi:
+    image: spotifyregistrycontainer.azurecr.io/spotify_linear_model_api:latest
+    container_name: modelapi
+    ports:
+      - "80:80"
+    command: uvicorn main:app --host 0.0.0.0 --port 80
+#   dnsConfig:
+#     nameServers:
+#     - 10.0.0.0 # DNS Server 1
+#     searchDomains: plusdegout.com # DNS search suffix
+#   ipAddress:
+#     type: Private
+#     ports:
+#     - port: 8000
+#   subnetIds:
+#     - id: /subscriptions/ca3d0154-92e2-4ddc-8b54-a2e1b8f5281b/resourceGroups/RG-charles-beniac/providers/Microsoft.Network/virtualNetworks/charles-vnet/subnets/aci-subnet
+#   osType: Linux
+# tags: null
+# type: Microsoft.ContainerInstance/containerGroups
